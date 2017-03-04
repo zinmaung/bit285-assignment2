@@ -12,8 +12,33 @@ namespace Assignment2.Controllers
         // GET: Account
         public ActionResult Index()
         {
+            using (VisitorLogContext db = new VisitorLogContext())
+            {
+                return View(db.Users.ToList());
+            }
+        }
+
+        public ActionResult NewAccount()
+        { 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult NewAccount(User newAcct)
+        {
+            if (ModelState.IsValid)
+            {
+                using (VisitorLogContext db = new VisitorLogContext())
+                {
+                    db.Users.Add(newAcct);
+                    db.SaveChanges();
+                }
+                ModelState.Clear();
+                ViewBag.Message = newAcct.FirstName + " " + newAcct.LastName + ", You just registered";
+            }
+            return View("~/Views/Login/Login.cshtml");
+        }
+
 
 
  /**

@@ -10,7 +10,7 @@ namespace Assignment2.Models
         //  By default, this connection string targets the 
         // 'Assignment2.Models.VisitorLog' database on your LocalDb instance. 
 
-        public VisitorLogContext(): base("name=VisitorLog")
+        public VisitorLogContext(): base("VisitorLog")
         {
         }
 
@@ -18,6 +18,8 @@ namespace Assignment2.Models
         public virtual DbSet<User> Users { get; set; } 
         public virtual DbSet<Program> Programs { get; set; }
         public virtual DbSet<Activity> Activities { get; set; }
+
+        public System.Data.Entity.DbSet<Assignment2.ViewModels.Login> Logins { get; set; }
     }
 
 }

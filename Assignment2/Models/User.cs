@@ -14,17 +14,15 @@ namespace Assignment2.Models
 
         [Display(Name = "Email Address")]
         [EmailAddress(ErrorMessage ="Invalid email address")]
-        [Required] 
+        [Required]
+        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3]\.)|(([\w-]+\.)+))([a-zA-Z{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter valid email.")]
         public string Email { get; set; }
 
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
+        [Required(ErrorMessage ="First Name is required.")]
+        [Display(Name = "First Name")]   
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Last Name is required.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -33,6 +31,10 @@ namespace Assignment2.Models
         public int ProgramID { get; set; }
 
         public bool LoggedIn { get; set; }
+        public bool UserName { get; internal set; }
+        public bool PassWord { get; internal set; }
 
+
+        //public bool UserName { get; internal set; }
     }
 }
