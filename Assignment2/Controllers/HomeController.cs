@@ -12,7 +12,5 @@ namespace Assignment2.Controllers
         {
             return View();
         }
-
-        
     }
 }
