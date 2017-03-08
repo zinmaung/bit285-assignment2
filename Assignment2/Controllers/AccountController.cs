@@ -14,7 +14,7 @@ namespace Assignment2.Controllers
         {
             using (VisitorLogContext db = new VisitorLogContext())
             {
-                  return View(db.Users.ToList());
+                 return View(db.Users.ToList());
             }
         }
 
